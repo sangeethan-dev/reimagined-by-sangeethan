@@ -28,7 +28,7 @@ export default function LineSvg() {
     }
   };
 
-  const manageMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
+  const manageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { movementY } = e;
     progress += movementY;
     setPath(progress);
