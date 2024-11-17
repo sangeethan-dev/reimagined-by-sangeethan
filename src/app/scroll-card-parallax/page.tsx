@@ -1,11 +1,22 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useScroll } from "framer-motion";
 import Card from "@/components/scroll-card-parallax/Card";
 import { projects } from "../../data/scroll-card-parallax";
+import Lenis from "@studio-freight/lenis";
 
 const Page: React.FC = () => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: DOMHighResTimeStamp) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
   const container = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: container,
